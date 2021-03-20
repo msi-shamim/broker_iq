@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,6 +28,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  carousel_slider: ^4.0.0-nullsafety.0
+  pinput: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -45,9 +47,24 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/logo.png
+    - assets/register_phone_number.png
+    - assets/congrats.png
+    - assets/convince_01_easy_way.png
+    - assets/convince_02_find_all.png
+    - assets/landing_01_security.png
+    - assets/landing_02_Policy_Vault.png
+    - assets/landing_03_Document_Vault.png
+    - assets/r_about_gender_title.png
+    - assets/r_address_location_pick.png
+    - assets/r_congrats_celebrate.png
+    - assets/r_dob_birthday.png
+    - assets/r_email_envelop.png
+    - assets/r_notification_notification_alert.png
+    - assets/r_phone_phone_number.png
+    - assets/register_phone_number.png
+    - assets/r_otp_verification.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
