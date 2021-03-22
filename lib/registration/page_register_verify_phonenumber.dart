@@ -1,6 +1,7 @@
 import 'package:broker_iq/registration/page_active_notifications.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
 class VerifyPhoneNumber extends StatelessWidget {
@@ -37,77 +38,75 @@ class _VerifyState extends State<_Verify> {
       appBar: AppBar(
         title: Text('Verification'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                width: double.infinity,
-                child: Align(
-                  alignment: FractionalOffset.center,
-                    child: Image.asset(
-                  'assets/r_otp_verification.png',
-                  fit: BoxFit.fitWidth,
-                )),
-              ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              child: SvgPicture.asset('assets/r_otp_verification.svg'),
             ),
-            Expanded(
-              child: Align(
-                alignment: FractionalOffset.bottomCenter,
+          ),
+          Expanded(
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              color: Color.fromARGB(13, 0, 0, 0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: Wrap(
                   children: [
                     Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            'We have sent you 6 digit OTP (One Time Passcode). \nSubmit that below:'),
-                      ),
+                      margin: EdgeInsets.all(8.0),
+                      child: Text(
+                          'We have sent you 6 digit OTP (One Time Passcode). \nSubmit that below:',
+                      style: TextStyle(color: Colors.black45),),
                     ),
                     Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: PinPut(
-                          fieldsCount: 6,
-                          onSubmit: (String pin) => _showSnackBar(pin, context),
-                          focusNode: _pinPutFocusNode,
-                          controller: _pinPutController,
-                          submittedFieldDecoration: _pinPutDecoration.copyWith(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          selectedFieldDecoration: _pinPutDecoration,
-                          followingFieldDecoration: _pinPutDecoration.copyWith(
-                              borderRadius: BorderRadius.circular(5.0),
-                              border: Border.all(
-                                  color: Colors.black87, width: 2.0)),
-                        ),
+                      margin: EdgeInsets.all(8.0),
+                      child: PinPut(
+                        fieldsCount: 6,
+                        onSubmit: (String pin) => _showSnackBar(pin, context),
+                        focusNode: _pinPutFocusNode,
+                        controller: _pinPutController,
+                        submittedFieldDecoration: _pinPutDecoration.copyWith(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        selectedFieldDecoration: _pinPutDecoration,
+                        followingFieldDecoration: _pinPutDecoration.copyWith(
+                            borderRadius: BorderRadius.circular(5.0),
+                            border:
+                                Border.all(color: Colors.black45, width: 2.0)),
+                        inputDecoration: InputDecoration(
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none),
                       ),
                     ),
                     Container(
                       width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          NotificationConfirmation()));
-                            },
-                            child: Text(
-                              'Verify',
-                              style: TextStyle(color: Colors.black87),
-                            )),
-                      ),
+                      margin: EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        NotificationConfirmation()));
+                          },
+                          child: Text(
+                            'Verify OTP',
+                            style: TextStyle(color: Colors.black87),
+                          )),
                     )
                   ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

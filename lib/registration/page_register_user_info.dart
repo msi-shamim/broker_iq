@@ -242,113 +242,98 @@ class _UserInfoState extends State<_UserInfo> {
       appBar: AppBar(
         title: Text('Primary Queries'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
+      body: Container(
+        margin: EdgeInsets.all(16.0),
+        alignment: Alignment.center,
+        child: Wrap(
             children: [
               Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "These queries will make BrokerIQ experience better",
-                    style: TextStyle(color: Colors.black38),
-                    textAlign: TextAlign.center,
-                  ),
+                margin: EdgeInsets.all(8.0),
+                alignment: Alignment.center,
+                child: Text(
+                  "These queries will make BrokerIQ experience better",
+                  style: TextStyle(color: Colors.black38),
                 ),
               ),
               Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton(
-                    value: country,
-                    icon:  Icon(Icons.keyboard_arrow_down),
-                    elevation: 16,
-                    onChanged: (String? newCountry){
-                      setState(() {
-                        country = newCountry!;
-                      });
-                    },
-                    isExpanded: true,
-                    underline: Container(
-                      height: 2.0,
-                      color: Colors.green,
-                    ),
-                    items: _countryList.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value));
-                    }).toList(),
-                  ),
-                ),
-              ),
-
-              Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton(
-                    value: residentialStatus,
-                    icon:  Icon(Icons.keyboard_arrow_down),
-                    elevation: 16,
-                    onChanged: (String? newValue){
-                      setState(() {
-                        residentialStatus = newValue!;
-                      });
-                    },
-                    isExpanded: true,
-                    underline: Container(
-                      height: 2.0,
-                      color: Colors.green,
-                    ),
-                    items: _residentials.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value));
-                    }).toList(),
-                  ),
-                ),
-              ),
-
-              Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton(
-                    value: employmentStatus,
-                    icon:  Icon(Icons.keyboard_arrow_down),
-                    elevation: 16,
-                    onChanged: (String? newValue){
-                      setState(() {
-                        employmentStatus = newValue!;
-                      });
-                    },
-                    isExpanded: true,
-                    underline: Container(
-                      height: 2.0,
-                      color: Colors.green,
-                    ),
-                    items: _employments.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value));
-                    }).toList(),
-                  ),
-                ),
-              ),
-
-              Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterInsurances()));
+                margin: EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  value: country,
+                  icon:  Icon(Icons.keyboard_arrow_down),
+                  elevation: 16,
+                  onChanged: (String? newCountry){
+                    setState(() {
+                      country = newCountry!;
+                    });
                   },
-                      child: Text('Continue', style: TextStyle(color: Colors.black87),)),
+                  isExpanded: true,
+                  underline: Container(
+                    height: 2.0,
+                    color: Colors.green,
+                  ),
+                  items: _countryList.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value));
+                  }).toList(),
                 ),
+              ),
+
+              Container(
+                margin: EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  value: residentialStatus,
+                  icon:  Icon(Icons.keyboard_arrow_down),
+                  elevation: 16,
+                  onChanged: (String? newValue){
+                    setState(() {
+                      residentialStatus = newValue!;
+                    });
+                  },
+                  isExpanded: true,
+                  underline: Container(
+                    height: 2.0,
+                    color: Colors.green,
+                  ),
+                  items: _residentials.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value));
+                  }).toList(),
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.all(8.0),
+                child: DropdownButton(
+                  value: employmentStatus,
+                  icon:  Icon(Icons.keyboard_arrow_down),
+                  elevation: 16,
+                  onChanged: (String? newValue){
+                    setState(() {
+                      employmentStatus = newValue!;
+                    });
+                  },
+                  isExpanded: true,
+                  underline: Container(
+                    height: 2.0,
+                    color: Colors.green,
+                  ),
+                  items: _employments.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value));
+                  }).toList(),
+                ),
+              ),
+
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.all(8.0),
+                child: ElevatedButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterInsurances()));
+                },
+                    child: Text('Continue', style: TextStyle(color: Colors.black87),)),
               ),
             ]),
       ),

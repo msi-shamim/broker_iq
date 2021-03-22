@@ -1,5 +1,6 @@
 import 'package:broker_iq/registration/page_register_user_dob.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class RegisterUserFullName extends StatelessWidget{
   @override
@@ -31,61 +32,54 @@ class _UserFullNameState extends State<_UserFullName>{
           'Full Name'
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-                flex: 2,
-                child: Container(
-                  child: Align(
-                    alignment: FractionalOffset.center,
-                    child: Image.asset('assets/r_about_gender_title.png', fit: BoxFit.fitWidth,),
-                  ),
-                )),
-            Expanded(
-              child: Align(
-                alignment: FractionalOffset.bottomCenter,
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+              child: Container(
+                margin: EdgeInsets.all(16.0),
+                width: double.infinity,
+                alignment: Alignment.center,
+                child: SvgPicture.asset('assets/r_about_gender_title.svg'),
+              )),
+          Expanded(
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              color: Color.fromARGB(13, 0, 0, 0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: Wrap(
                   children: [
                     Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("We don't share or sell your data. Any kinds of information related to you is only used for you and your broker connection build up.",
-                          style: TextStyle(color: Colors.black38),),
-                      ),
+                      margin: EdgeInsets.all(8.0),
+                      child: Text("We don't share or sell your data. Any kinds of information related to you is only used for you and your broker connection build up.",
+                        style: TextStyle(color: Colors.black45),),
                     ),
                     Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            labelText: 'Full Name',
-                            enabledBorder: OutlineInputBorder(),
-                            prefixIcon: _titleDropdown(),
+                      margin: EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Full Name',
+                          enabledBorder: OutlineInputBorder(),
+                          prefixIcon: _titleDropdown(),
 
-                          ),
                         ),
                       ),
                     ),
                     Container(
                       width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterUserDOB()));
-                        },
-                            child: Text('Continue', style: TextStyle(color: Colors.black87),)),
-                      ),
+                      margin: EdgeInsets.all(8.0),
+                      child: ElevatedButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterUserDOB()));
+                      },
+                          child: Text('Continue', style: TextStyle(color: Colors.black87),)),
                     )
                   ],
-                )
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

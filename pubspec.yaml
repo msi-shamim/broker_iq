@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.0.0-nullsafety.0
   pinput: ^1.2.0
+  flutter_svg: ^0.21.0-nullsafety.0
 
 dev_dependencies:
   flutter_test:
@@ -49,22 +50,21 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/logo.png
-    - assets/register_phone_number.png
-    - assets/congrats.png
-    - assets/convince_01_easy_way.png
-    - assets/convince_02_find_all.png
-    - assets/landing_01_security.png
-    - assets/landing_02_Policy_Vault.png
-    - assets/landing_03_Document_Vault.png
-    - assets/r_about_gender_title.png
-    - assets/r_address_location_pick.png
-    - assets/r_congrats_celebrate.png
-    - assets/r_dob_birthday.png
-    - assets/r_email_envelop.png
-    - assets/r_notification_notification_alert.png
-    - assets/r_phone_phone_number.png
-    - assets/register_phone_number.png
-    - assets/r_otp_verification.png
+    - assets/register_phone_number.svg
+    - assets/convince_01_easy_way.svg
+    - assets/convince_02_find_all.svg
+    - assets/landing_01_security.svg
+    - assets/landing_02_Policy_Vault.svg
+    - assets/landing_03_Document_Vault.svg
+    - assets/r_about_gender_title.svg
+    - assets/r_address_location_pick.svg
+    - assets/r_congrats_celebrate.svg
+    - assets/r_dob_birthday.svg
+    - assets/r_email_envelop.svg
+    - assets/r_notification_alert.svg
+    - assets/r_phone_phone_number.svg
+    - assets/register_phone_number.svg
+    - assets/r_otp_verification.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

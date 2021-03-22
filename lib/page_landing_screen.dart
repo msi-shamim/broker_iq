@@ -2,11 +2,12 @@ import 'package:broker_iq/registration/page_convince_to_register_01.dart';
 import 'package:broker_iq/login/page_login_email_password.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 final List<String> imgList = [
-  'assets/landing_01_security.png',
-  'assets/landing_02_Policy_Vault.png',
-  'assets/landing_03_Document_Vault.png',
+  'assets/landing_01_security.svg',
+  'assets/landing_02_Policy_Vault.svg',
+  'assets/landing_03_Document_Vault.svg',
 ];
 
 final List<String> imgTitles = [
@@ -17,44 +18,47 @@ final List<String> imgTitles = [
 
 final List<Widget> imageSliders = imgList
     .map((item) => Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(5.0),
-      child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Image.asset(item, fit: BoxFit.fitWidth),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(168, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0)
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
+          width: double.infinity,
+          margin: EdgeInsets.all(5.0),
+          child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  SvgPicture.asset(
+                    item,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  Positioned(
+                    bottom: 0.0,
+                    left: 0.0,
+                    right: 0.0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromARGB(168, 0, 0, 0),
+                            Color.fromARGB(0, 0, 0, 0)
+                          ],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 20.0),
+                      child: Text(
+                        imgTitles[imgList.indexOf(item)],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ),
                   ),
-                  padding: EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 20.0),
-                  child: Text(
-                    imgTitles[imgList.indexOf(item)],
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )),
-    ))
+                ],
+              )),
+        ))
     .toList();
 
 class LandingScreen extends StatefulWidget {
@@ -81,63 +85,78 @@ class _LandingScreenState extends State<LandingScreen> {
           style: TextStyle(color: Colors.black87),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              width: double.infinity,
-              child: CarouselWithIndicator(),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            flex: 3,
+            child: Container(
+              margin: EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              child: Wrap(children: [
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  child: CarouselWithIndicator(),
+                ),
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  alignment: Alignment.center,
+                  child: Text('BrokerIQ', style: TextStyle(fontSize: 24.0),),
+                ),
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  alignment: Alignment.center,
+                  child: Text('This is BrokerIQ and that is our slogan.'),
+                )
+              ]),
             ),
-            //3. Login outline button
-            Expanded(
-                child: Align(
-                  alignment: FractionalOffset.bottomCenter,
+          ),
+          //3. Login outline button
+          Expanded(
+              child: Container(
+            alignment: Alignment.bottomCenter,
+            color: Color.fromARGB(13, 0, 0, 0),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Wrap(
                 children: [
                   Container(
                     width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
-                        },
-                        child: Text(
-                          "Login",
-                          style: TextStyle(color: Colors.black87),
-                        ),
+                    margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
+                      },
+                      child: Text(
+                        "LOGIN",
+                        style: TextStyle(color: Colors.green, fontSize: 18.0),
                       ),
                     ),
                   ),
                   Container(
                     width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ConvinceRegistration01()));
-                        },
-                        child: Text(
-                          "I'm new to BIQ",
-                          style: TextStyle(color: Colors.black87),
-                        ),
+                    margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ConvinceRegistration01()));
+                      },
+                      child: Text(
+                        "I'm new to BIQ",
+                        style: TextStyle(color: Colors.black87),
                       ),
                     ),
                   ),
                 ],
               ),
-            )),
-          ],
-        ),
+            ),
+          )),
+        ],
       ),
     );
   }
@@ -161,7 +180,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
         options: CarouselOptions(
             autoPlay: true,
             enlargeCenterPage: true,
-            aspectRatio: 1,
+            aspectRatio: 2,
             onPageChanged: (index, reason) {
               setState(() {
                 _current = index;

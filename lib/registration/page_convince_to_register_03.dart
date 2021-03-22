@@ -1,7 +1,7 @@
 import 'package:broker_iq/registration/page_register_phone_number.dart';
 import 'package:flutter/material.dart';
 
-class ConvinceRegistration03 extends StatelessWidget{
+class ConvinceRegistration03 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -12,11 +12,9 @@ class ConvinceRegistration03 extends StatelessWidget{
       body: _Benefits(),
     );
   }
-
 }
 
-class _Benefits extends StatefulWidget{
-
+class _Benefits extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -39,63 +37,68 @@ class _BenefitsState extends State<_Benefits> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Container(
-            height: 300.0,
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Container(
+            margin: EdgeInsets.all(16.0),
             child: ListView.builder(
                 itemCount: _items.length,
-                itemBuilder: (context, index){
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8.0,
-                  horizontal: 0.0
-                ),
-                child: ListTile(
-                  title: Text('${_items[index]}'),
-                  leading: Icon(
-                    _itemIcons[index],
-                    size: 52.0,
-                    color: Colors.green,
-
-                  ),
-                ),
-              );
-            }),
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin:
+                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+                    child: ListTile(
+                      title: Text('${_items[index]}'),
+                      leading: Icon(
+                        _itemIcons[index],
+                        size: 40.0,
+                      ),
+                    ),
+                  );
+                }),
           ),
-          Expanded(
-            child: Align(
-              alignment: FractionalOffset.bottomLeft,
+        ),
+        Expanded(
+          child: Container(
+            alignment: Alignment.center,
+            color: Color.fromARGB(13, 0, 0, 0),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Wrap(
                 children: [
                   Container(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('Happy to Sign up?', style: TextStyle(fontSize: 24.0),),
+                    margin: EdgeInsets.all(2.0),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Happy to sign up?',
+                      style: TextStyle(fontSize: 24.0, color: Colors.black45),
                     ),
                   ),
                   Container(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>RegistrationScreen()));
-                        },
-                        child: Text('Get Started', style: TextStyle(color: Colors.black87),),
+                    margin: EdgeInsets.all(2.0),
+                    alignment: Alignment.center,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegistrationScreen()));
+                      },
+                      child: Text(
+                        'GET STARTED',
+                        style: TextStyle(color: Colors.green, fontSize: 18.0),
                       ),
                     ),
                   )
                 ],
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

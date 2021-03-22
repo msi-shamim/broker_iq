@@ -90,7 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Container(
                     child: Text(
                       'OR',
-                      style: TextStyle(backgroundColor: Colors.white),
+                      style: TextStyle(backgroundColor: Colors.white,
+                      color: Colors.black45),
                     ),
                   )),
                 )

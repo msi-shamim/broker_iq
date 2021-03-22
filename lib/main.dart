@@ -18,6 +18,8 @@ class BrokerIQ extends StatelessWidget {
       theme: Brokeriq.lightTheme,
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,
+      debugShowMaterialGrid: false,
+      showSemanticsDebugger: false,
     );
   }
 }
@@ -45,26 +47,30 @@ class SplashState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
           key: _scaffoldKey,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: Text(
-              "BROKER IQ",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black87),
-            ),
-          ),
+          appBar: null,
           body: Builder(
             builder: (context) => Center(
-              child: Container(
-                width: 150.0,
-                height: 150.0,
-                child: Image.asset("assets/logo.png"),
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: Image.asset("assets/logo.png"),
+                    ),
+                  ),
+                  Expanded(child: Container(
+                    margin: EdgeInsets.all(8.0),
+                    alignment: Alignment.bottomCenter,
+                    child: Text('All Rights Reserved | BrokerIQ : 2021',
+                    style: TextStyle(color: Colors.black45),),
+                  ))
+                ],
               ),
             ),
-          )),
-    );
+          ));
   }
 }

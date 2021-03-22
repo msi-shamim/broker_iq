@@ -52,89 +52,77 @@ class _InsurancesState extends State<_Insurances> {
       appBar: AppBar(
         title: Text('Insurance Details'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "let's do a quick audit of your insurances.",
-                  style: TextStyle(fontSize: 22.0),
-                  textAlign: TextAlign.center,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.all(16.0),
+            child: Wrap(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Let's do a quick audit of your insurances.",
+                    style: TextStyle(color: Colors.black45),
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: DropdownButton(
-                    icon: Icon(Icons.keyboard_arrow_down),
-                    elevation: 16,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        product = newValue!;
-                      });
-                    },
-                    isExpanded: true,
-                    underline: Container(
-                      height: 2.0,
-                      color: Colors.green,
-                    ),
-                    value: product,
-                    items: _products
-                        .map<DropdownMenuItem<String>>((String value) =>
-                            DropdownMenuItem<String>(
-                                value: value, child: Text(value)))
-                        .toList()),
-              ),
-            ),
-            SizedBox(
-              height: 48.0,
-            ),
-            Container(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Do you use any other brokers? Let's include them in you information.",
-                  style: TextStyle(fontSize: 22.0),
-                  textAlign: TextAlign.center,
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  child: DropdownButton(
+                      icon: Icon(Icons.keyboard_arrow_down),
+                      elevation: 16,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          product = newValue!;
+                        });
+                      },
+                      isExpanded: true,
+                      underline: Container(
+                        height: 2.0,
+                        color: Colors.green,
+                      ),
+                      value: product,
+                      items: _products
+                          .map<DropdownMenuItem<String>>((String value) =>
+                              DropdownMenuItem<String>(
+                                  value: value, child: Text(value)))
+                          .toList()),
                 ),
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Broker Name', border: OutlineInputBorder()),
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Do you use any other brokers? Let's include them in you information.",
+                    style: TextStyle(color: Colors.black45),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'Broker Name', border: OutlineInputBorder()),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegistrationComplete()));
+                      },
+                      child: Text(
+                        'Continue',
+                        style: TextStyle(color: Colors.black87),
+                      )),
+                )
+              ],
             ),
-            Container(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegistrationComplete()));
-                    },
-                    child: Text(
-                      'Continue',
-                      style: TextStyle(color: Colors.black87),
-                    )),
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
