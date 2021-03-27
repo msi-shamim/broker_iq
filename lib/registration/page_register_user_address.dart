@@ -55,7 +55,6 @@ class _AddressState extends State<_Address> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text('Find Your Address'),
@@ -66,7 +65,6 @@ class _AddressState extends State<_Address> {
           Expanded(
               child: Container(
             margin: EdgeInsets.all(16.0),
-            alignment: Alignment.center,
             child: SvgPicture.asset('assets/r_address_location_pick.svg'),
           )),
           Expanded(
@@ -78,14 +76,7 @@ class _AddressState extends State<_Address> {
                   child: Wrap(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(8.0),
-                        child: Text(
-                          "We don't share or sell your data. \nAny kinds of information related to you is only used for you and your broker connection build up.",
-                          style: TextStyle(color: Colors.black45),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(8.0),
+                        margin: EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
                         child: DropdownButton(
                           value: dropdownValue,
                           icon: Icon(Icons.keyboard_arrow_down),
@@ -105,6 +96,13 @@ class _AddressState extends State<_Address> {
                             return DropdownMenuItem<String>(
                                 value: value, child: Text(value));
                           }).toList(),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(8.0),
+                        child: Text(
+                          "We don't share or sell your data. \nAny kinds of information related to you is only used for you and your broker connection build up.",
+                          style: TextStyle(color: Colors.black45),
                         ),
                       ),
                       Container(

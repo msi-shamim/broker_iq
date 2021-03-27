@@ -33,6 +33,8 @@ class _VerifyState extends State<_Verify> {
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +46,6 @@ class _VerifyState extends State<_Verify> {
           Expanded(
             child: Container(
               margin: EdgeInsets.all(16.0),
-              alignment: Alignment.center,
               child: SvgPicture.asset('assets/r_otp_verification.svg'),
             ),
           ),
@@ -64,25 +65,36 @@ class _VerifyState extends State<_Verify> {
                     ),
                     Container(
                       margin: EdgeInsets.all(8.0),
-                      child: PinPut(
-                        fieldsCount: 6,
-                        onSubmit: (String pin) => _showSnackBar(pin, context),
-                        focusNode: _pinPutFocusNode,
-                        controller: _pinPutController,
-                        submittedFieldDecoration: _pinPutDecoration.copyWith(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        selectedFieldDecoration: _pinPutDecoration,
-                        followingFieldDecoration: _pinPutDecoration.copyWith(
-                            borderRadius: BorderRadius.circular(5.0),
-                            border:
-                                Border.all(color: Colors.black45, width: 2.0)),
-                        inputDecoration: InputDecoration(
-                            border: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            focusedErrorBorder: InputBorder.none),
+                      child: Form(
+                        key: _formKey,
+                        child: PinPut(
+                          validator: (value){
+                            if(value == null || value.isEmpty){
+                              return 'OTP Required!';
+                            }else if(value.length < 6){
+                              return 'OTP cannot be less than 6 digit!';
+                            }
+                            return null;
+                          },
+                          fieldsCount: 6,
+                          onSubmit: (String pin) => _showSnackBar(pin, context),
+                          focusNode: _pinPutFocusNode,
+                          controller: _pinPutController,
+                          submittedFieldDecoration: _pinPutDecoration.copyWith(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          selectedFieldDecoration: _pinPutDecoration,
+                          followingFieldDecoration: _pinPutDecoration.copyWith(
+                              borderRadius: BorderRadius.circular(5.0),
+                              border:
+                                  Border.all(color: Colors.black45, width: 2.0)),
+                          inputDecoration: InputDecoration(
+                              border: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none),
+                        ),
                       ),
                     ),
                     Container(
@@ -90,11 +102,13 @@ class _VerifyState extends State<_Verify> {
                       margin: EdgeInsets.all(8.0),
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        NotificationConfirmation()));
+                            if(_formKey.currentState!.validate()){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          NotificationConfirmation()));
+                            }
                           },
                           child: Text(
                             'Verify OTP',

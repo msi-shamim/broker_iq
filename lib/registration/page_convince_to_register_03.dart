@@ -41,7 +41,7 @@ class _BenefitsState extends State<_Benefits> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
-          flex: 3,
+          flex: 4,
           child: Container(
             margin: EdgeInsets.all(16.0),
             child: ListView.builder(

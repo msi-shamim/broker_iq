@@ -63,7 +63,7 @@ class SplashState extends State<SplashScreen> {
                     ),
                   ),
                   Expanded(child: Container(
-                    margin: EdgeInsets.all(8.0),
+                    margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
                     alignment: Alignment.bottomCenter,
                     child: Text('All Rights Reserved | BrokerIQ : 2021',
                     style: TextStyle(color: Colors.black45),),

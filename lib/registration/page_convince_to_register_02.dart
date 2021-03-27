@@ -8,7 +8,7 @@ class ConvinceRegistration02 extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Why BROKERIQ?'),
+        title: Text('Why BrokerIQ?'),
       ),
       body: _Benefits(),
     );
@@ -31,6 +31,7 @@ class _BenefitsState extends State<_Benefits> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
+          flex: 2,
           child: Container(
             margin: EdgeInsets.all(16.0),
             child: SvgPicture.asset(

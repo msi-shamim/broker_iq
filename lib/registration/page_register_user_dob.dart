@@ -1,8 +1,9 @@
 import 'package:broker_iq/registration/page_register_user_email.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class RegisterUserDOB extends StatelessWidget{
+class RegisterUserDOB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -11,7 +12,7 @@ class RegisterUserDOB extends StatelessWidget{
 
 }
 
-class _UserDOB extends StatefulWidget{
+class _UserDOB extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -19,7 +20,8 @@ class _UserDOB extends StatefulWidget{
   }
 }
 
-class _UserDOBState extends State<_UserDOB>{
+class _UserDOBState extends State<_UserDOB> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -45,25 +47,46 @@ class _UserDOBState extends State<_UserDOB>{
                 child: Wrap(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(8.0),
-                      child: Text("We don't share or sell your data. \nAny kinds of information related to you is only used for you and your broker connection build up.",
-                        style: TextStyle(color: Colors.black38),),
+                      margin: EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
+                      child: Form(
+                        key: _formKey,
+                        child: DateTimePicker(
+                          type: DateTimePickerType.date,
+                          dateMask: 'dd/MM/yyyy',
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now(),
+                          icon: Icon(Icons.event),
+                          dateLabelText: 'Date of Birth',
+                          selectableDayPredicate: (date){
+                            if(date.weekday == 6 || date.weekday == 7){
+                              return false;
+                            }
+                            return true;
+                          },
+                          validator: (val){
+                            if(val == null || val.isEmpty){
+                              return 'Date of Birth required!';
+                            }
+                            return null;
+                          },
+
+                        ),
+                      )
                     ),
                     Container(
                       margin: EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'DD/MM/YYYY',
-                            labelText: 'Date of Birth'
-                        ),
-                      ),
+                      child: Text(
+                        "We don't share or sell your data. \nAny kinds of information related to you is only used for you and your broker connection build up.",
+                        style: TextStyle(color: Colors.black38),),
                     ),
                     Container(
                       width: double.infinity,
                       margin: EdgeInsets.all(8.0),
-                      child: ElevatedButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterUserEmail()));
+                      child: ElevatedButton(onPressed: () {
+                        if(_formKey.currentState!.validate()){
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => RegisterUserEmail()));
+                        }
                       }, child: Text('Continue',
                         style: TextStyle(color: Colors.black87),)),
                     )

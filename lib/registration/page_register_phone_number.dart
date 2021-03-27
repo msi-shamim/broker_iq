@@ -2,7 +2,7 @@ import 'package:broker_iq/registration/page_register_verify_phonenumber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class RegistrationScreen extends StatelessWidget{
+class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -13,10 +13,9 @@ class RegistrationScreen extends StatelessWidget{
       body: _Registration(),
     );
   }
-
 }
 
-class _Registration extends StatefulWidget{
+class _Registration extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -24,7 +23,10 @@ class _Registration extends StatefulWidget{
   }
 }
 
-class _RegistrationState extends State<_Registration>{
+
+class _RegistrationState extends State<_Registration> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -48,27 +50,48 @@ class _RegistrationState extends State<_Registration>{
                 children: [
                   Container(
                     margin: EdgeInsets.all(8.0),
-                    child: Text("We use your phone number to identify your account with your broker. \nPlease enter it below.",
-                    style: TextStyle(color: Colors.black45),),
+                    child: Form(
+                      key: _formKey,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Phone number required!';
+                          } else if (value.length < 10) {
+                            return 'Phone number cannot be less than 10 digit!';
+                          }
+                          return null;
+                        },
+                        obscureText: false,
+                        keyboardType: TextInputType.phone,
+                        maxLength: 10,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.call),
+                            prefixText: '(+44) ',
+                            border: OutlineInputBorder(),
+                            labelText: 'Phone number'),
+                        cursorColor: Colors.green,
+                      ),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      obscureText: false,
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.call),
-                          prefixText: '(+44) ',
-                          enabledBorder: OutlineInputBorder(),
-                          labelText: 'Phone number'),
-                      cursorColor: Colors.green,
+                    child: Text(
+                      "We use your phone number to identify your account with your broker. \nPlease enter it below.",
+                      style: TextStyle(color: Colors.black45),
                     ),
                   ),
                   Container(
                     width: double.infinity,
                     margin: EdgeInsets.all(8.0),
-                    child: ElevatedButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>VerifyPhoneNumber()));
-                    },
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => VerifyPhoneNumber()));
+                          }
+                        },
                         child: Text(
                           'Verify Phone Number',
                           style: TextStyle(color: Colors.black87),

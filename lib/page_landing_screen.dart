@@ -138,7 +138,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   ),
                   Container(
                     width: double.infinity,
-                    margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
+                    margin: EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(

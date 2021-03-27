@@ -31,6 +31,7 @@ class _BenefitsState extends State<_Benefits> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
+          flex: 2,
           child: Container(
             margin: EdgeInsets.all(16.0),
               child: SvgPicture.asset('assets/convince_01_easy_way.svg')),
